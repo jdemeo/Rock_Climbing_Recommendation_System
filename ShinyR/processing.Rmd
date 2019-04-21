@@ -1,0 +1,28 @@
+
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+data <- read.csv("cleaned_routes.csv")
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+data2 <- data %>%
+  mutate(pitches = ifelse(is.na(pitches), 0, pitches))
+```
+
+```{r}
+head(data2)
+```
+
+```{r}
+write.csv(data2, "cleaned_routes.csv")
+```
+

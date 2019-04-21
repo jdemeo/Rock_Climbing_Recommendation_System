@@ -1,0 +1,48 @@
+
+
+```{r}
+library(shiny)
+library(shinythemes)
+library(leaflet)
+library(DT)
+library(ggplot2)
+library(ggpubr)
+library(ggvis)
+library(stringr)
+library(httr)
+library(jsonlite)
+library(mongolite)
+library(RcppCNPy)
+library(shinyalert)
+source("getgeo.r")
+source("recommenders.r")
+library(dplyr)
+```
+
+
+
+```{r}
+routesCleaned <- read.csv("cleaned_routes.csv")
+routeLocations <- read.csv("master_routes_lat_long.csv")
+```
+
+```{r}
+head(routesCleaned)
+```
+```{r}
+nrow(route)
+```
+
+```{r}
+head(routeLocations)
+```
+
+```{r}
+d <- left_join(routesCleaned, routeLocations, by = c("id" = "RouteID"))
+```
+
+```{r}
+write.csv(d, "routesCleanedWithLoc.csv")
+```
+
+
